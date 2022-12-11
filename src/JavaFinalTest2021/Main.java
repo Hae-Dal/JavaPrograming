@@ -1,6 +1,8 @@
 package JavaFinalTest2021;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -110,13 +112,13 @@ public class Main extends JFrame {
             gbc.gridheight = 1;
             orderPane.add(rbPane, gbc);
 
-            gbc.weighty = 0.5;
             gbc.gridx = 0;
             gbc.gridy = 1;
             gbc.gridwidth = 1;
             gbc.gridheight = 1;
             orderPane.add(new JPanel(), gbc);
 
+            gbc.weighty = 0.3;
             gbc.gridx = 1;
             gbc.gridy = 1;
             gbc.gridwidth = 1;
@@ -167,15 +169,24 @@ public class Main extends JFrame {
 
     //스크롤바 JList 설정 ================================================================================================
 
-
     public JScrollPane getjScrollPane() {
         if(jScrollPane == null) {
             jScrollPane = new JScrollPane();
 
             jScrollPane.add(jList);
+            jList.addListSelectionListener(selectionListener);
         }
         return jScrollPane;
     }
+
+    private ListSelectionListener selectionListener = new ListSelectionListener() {
+        @Override
+        public void valueChanged(ListSelectionEvent e) {
+            if(jList.getSelectedIndex() == -1) {
+                return;
+            }
+        }
+    };
 
     public static void main(String[] args) {
         Main main = new Main();

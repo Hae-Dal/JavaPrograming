@@ -173,7 +173,7 @@ public class FinalTest extends JFrame {
         }
     };
 
-    // 리스트 팬 설정 ====================================================================================================
+    //스크롤 팬 설정 ====================================================================================================
     public JScrollPane getListScrollPane() {
         if(listScrollPane == null) {
             listScrollPane = new JScrollPane(jList);
